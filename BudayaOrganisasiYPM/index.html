@@ -1,55 +1,435 @@
 <!doctype html>
 <html lang="id">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Budaya Organisasi YPM</title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Budaya Organisasi YPM — Interaktif</title>
 <style>
-:root{--yt-red:#ff0000;--muted:#d7d7d7}
-body{margin:0;font-family:Arial;background:linear-gradient(180deg,#070707,#0f0f10);color:#fff}
-.center-screen{display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;background-image:url('assets/intro-bg.jpg');background-size:cover}
-.logo-wrap{background:rgba(0,0,0,0.35);padding:20px;border-radius:12px;display:flex;align-items:center;gap:18px}
-.logo-wrap img{height:86px}
-h1{margin:0;color:var(--yt-red);font-size:26px}
-.lead{color:var(--muted);max-width:900px;text-align:center;margin-top:10px}
-.btn{margin-top:22px;padding:12px 20px;border-radius:8px;background:var(--yt-red);color:#fff;border:none;font-weight:800;cursor:pointer}
-.motto{margin-top:12px;color:#fff;font-weight:600}
-.app{display:none;padding:18px;max-width:1200px;margin:24px auto}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-header img{height:48px}
-.carousel{display:flex;gap:14px;overflow-x:auto;padding:14px;border-radius:10px;min-height:260px}
-.card{flex:0 0 320px;background:linear-gradient(180deg,#171717,#121212);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:transform .28s}
-.card:hover{transform:translateY(-8px)}
-.thumb{height:160px;background-size:cover;background-position:center}
-.meta{padding:12px}
-.meta h3{margin:0;color:var(--yt-red)}
-.meta p{margin:8px 0 0;color:var(--muted);font-size:13px}
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.75);z-index:120}
-.modal.show{display:flex}
-.modal-card{width:min(900px,96%);background:#0e0e0e;padding:18px;border-radius:12px;border:2px solid rgba(255,0,0,0.08)}
-.poster-lg{height:200px;background-size:cover;border-radius:8px}
-.kp{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:6px;color:var(--muted);display:inline-block;margin:6px 6px 0 0}
-footer{margin-top:18px;padding:14px;text-align:center;color:var(--muted)}
-</style></head><body>
+  :root{
+    --yt-red:#ff0000;
+    --muted:#d7d7d7;
+    --dark:#0f0f10;
+    --card:#121212;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#070707,#0f0f10);
+    color:#fff;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Intro full-screen */
+  .center-screen{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:100vh;
+    flex-direction:column;
+    gap:18px;
+    background-image: url('assets/intro-bg.jpg');
+    background-size:cover;
+    background-position:center;
+    text-align:center;
+    padding:28px;
+  }
+  .logo-wrap{
+    background: rgba(0,0,0,0.36);
+    padding:18px 22px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+  }
+  .logo-wrap img{ height:84px; display:block; }
+  h1{ margin:0; color:var(--yt-red); font-size:26px; letter-spacing:0.4px; }
+  .motto{ margin-top:6px; color:#fff; font-weight:600; }
+  .lead{ color:var(--muted); max-width:900px; margin:0 auto; font-size:15px; }
+  .btn{
+    margin-top:12px;
+    padding:12px 20px;
+    border-radius:10px;
+    background:var(--yt-red);
+    color:#fff;
+    border:none;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow: 0 10px 30px rgba(255,0,0,0.12);
+    font-size:15px;
+  }
+
+  /* App main */
+  .app{ display:none; padding:18px; max-width:1200px; margin:20px auto; }
+  header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+  .brand{ display:flex; gap:12px; align-items:center; }
+  .brand img{ height:48px; }
+  .brand .title{ font-weight:800; color:var(--yt-red); }
+  .controls{ display:flex; gap:8px; align-items:center; }
+  .controls .small{ font-size:13px; color:var(--muted); }
+
+  /* Carousel and cards */
+  .carousel{ display:flex; gap:14px; overflow-x:auto; padding:14px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); }
+  .carousel::-webkit-scrollbar{ height:9px; }
+  .carousel::-webkit-scrollbar-thumb{ background:var(--yt-red); border-radius:8px; }
+  .card{
+    flex: 0 0 320px;
+    background: linear-gradient(180deg,#171717,#121212);
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.03);
+    cursor:pointer;
+    transition: transform .28s, box-shadow .28s;
+  }
+  .card:hover{ transform: translateY(-8px); box-shadow: 0 26px 80px rgba(0,0,0,0.6); }
+  .thumb{ height:170px; background-size:cover; background-position:center; }
+  .meta{ padding:12px; }
+  .meta h3{ margin:0; color:var(--yt-red); font-size:16px; }
+  .meta p{ margin:10px 0 0; color:var(--muted); font-size:13px; min-height:44px; }
+
+  /* details area */
+  .details{ margin-top:16px; padding:12px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); border:1px solid rgba(255,255,255,0.02);}
+  .detail-block{ display:none; padding:12px; border-radius:8px; background: rgba(255,255,255,0.01); margin-bottom:8px; color:var(--muted); }
+  .detail-block.show{ display:block; }
+  .detail-block h4{ margin:0 0 6px 0; color:var(--yt-red); }
+
+  .keypoints{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+  .kp{ background: rgba(255,255,255,0.03); padding:6px 10px; border-radius:8px; color:var(--muted); font-size:13px; }
+
+  /* modal */
+  .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background: rgba(0,0,0,0.78); z-index:200; padding:18px; }
+  .modal.show{ display:flex; }
+  .modal-card{ width:min(900px,96%); max-height:86vh; overflow:auto; background:#0e0e0e; padding:18px; border-radius:12px; border:2px solid rgba(255,0,0,0.08); box-shadow:0 30px 80px rgba(0,0,0,0.8); }
+  .modal-head{ display:flex; justify-content:space-between; align-items:center; gap:12px; }
+  .modal-body{ display:flex; gap:16px; margin-top:12px; align-items:flex-start; }
+  .poster-lg{ width:100%; height:200px; background-size:cover; border-radius:8px; flex:0 0 320px; border:1px solid rgba(255,255,255,0.03); }
+  .modal-body .right{ color:var(--muted); flex:1; }
+  .modal-body .right h4{ margin:0 0 8px 0; color:var(--yt-red); }
+  .modal-footer{ display:flex; justify-content:space-between; align-items:center; margin-top:14px; }
+
+  footer{ margin-top:18px; padding:14px; text-align:center; color:var(--muted); }
+
+  @media (max-width:880px){
+    .card{ flex:0 0 78%; }
+    .modal-body{ flex-direction:column; }
+    .poster-lg{ flex:0 0 auto; width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Intro Screen -->
 <div class="center-screen" id="intro">
-  <div class="logo-wrap"><img src="assets/logo-ypm.png" alt="Logo"><div><h1>Selamat Datang di Mind Mapping Budaya Organisasi YPM</h1><div class="motto">Berilmu, Beramal, dan Bertaqwa</div></div></div>
-  <p class="lead">SMK YPM 14 Sumobito — Menumbuhkan Karakter Unggul. Klik tombol di bawah untuk mulai presentasi.</p>
-  <button class="btn" id="startBtn">Mulai Presentasi ▶</button>
+  <div class="logo-wrap" role="banner" aria-label="Logo YPM">
+    <img src="assets/logo-ypm.png" alt="Logo SMK YPM 14">
+    <div style="text-align:left">
+      <h1>Selamat Datang — Mind Mapping Budaya Organisasi YPM</h1>
+      <div class="motto">Berilmu, Beramal, dan Bertaqwa</div>
+    </div>
+  </div>
+
+  <p class="lead">SMK YPM 14 Sumobito — Menumbuhkan karakter unggul melalui budaya organisasi. Klik <strong>Mulai Presentasi</strong> untuk memulai.</p>
+  <button id="startBtn" class="btn" aria-label="Mulai Presentasi">Mulai Presentasi ▶</button>
 </div>
-<div class="app" id="app">
-  <header><div style="display:flex;align-items:center;gap:12px"><img src="assets/logo-ypm.png"><div style="font-weight:800;color:var(--yt-red)">YPM Tube — Budaya Organisasi</div></div><div style="display:flex;gap:8px"><button id="musicToggle" class="btn" style="background:#fff;color:#000">🔈 Musik Off</button><button id="autoplayBtn" class="btn">Autoplay ▶</button></div></header>
-  <section style="margin-top:18px"><div class="carousel" id="carousel">
-    <div class="card" data-id="pengertian"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>📘 Pengertian Dasar</h3><p>Definisi Budaya, Organisasi, dan Budaya Kerja sebagai landasan.</p></div></div>
-    <div class="card" data-id="tujuan"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>🎯 Tujuan</h3><p>Arah perilaku, identitas, etika, dan kualitas layanan.</p></div></div>
-    <div class="card" data-id="jenis"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>🌀 Jenis Budaya</h3><p>Clan, Market, Hierarchy, Adhocracy — karakteristik & contoh.</p></div></div>
-    <div class="card" data-id="motto"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>✨ Motto YPM</h3><p>Berilmu, Beramal, dan Bertaqwa — identitas & pedoman.</p></div></div>
-    <div class="card" data-id="caturwiguna"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>💠 Catur Wiguna</h3><p>Empat hal berguna: manfaat, kualitas, disiplin, inovasi.</p></div></div>
-    <div class="card" data-id="inspirasi"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>💡 Inspirasi Astra</h3><p>Catur Dharma sebagai pijakan nilai.</p></div></div>
-    <div class="card" data-id="implementasi"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>🚀 Implementasi</h3><p>Integrasi ke RPP, kegiatan sosial, reward, & monitoring.</p></div></div>
-    <div class="card" data-id="dampak"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>🌱 Dampak & Hasil</h3><p>Disiplin, lingkungan positif, karakter, dan mutu meningkat.</p></div></div>
-    <div class="card" data-id="kesimpulan"><div class="thumb" style="background-image:url('assets/cover.jpg')"></div><div class="meta"><h3>🏁 Kesimpulan</h3><p>Budaya organisasi YPM = pondasi karakter unggul & manfaat bagi masyarakat.</p></div></div>
-  </div><div id="details" style="margin-top:14px"></div></section><footer>© 2025 SMK YPM 14 Sumobito</footer></div>
-<audio id="bgm" loop><source src="assets/music.wav" type="audio/wav"></audio>
-<div id="modal" class="modal" role="dialog" aria-modal="true"><div class="modal-card"><div class="modal-head"><h3 id="mTitle"></h3><div><button onclick="closeModal()" class="btn" style="background:#fff;color:#000">Tutup ✕</button></div></div><div class="modal-body"><div class="left"><div id="mPoster" class="poster-lg" style="background-image:url('assets/cover.jpg')"></div></div><div class="right"><h4 id="mSubtitle"></h4><p id="mText" style="white-space:pre-line;color:#d7d7d7"></p><div style="margin-top:12px"><strong>Poin Penting:</strong><div id="mPoints" class="keypoints"></div></div></div></div><div class="modal-footer"><div><button id="mPrev" class="btn">◀</button><button id="mNext" class="btn">▶</button></div><div class="small">Tekan Esc untuk tutup</div></div></div></div>
+
+<!-- Main App -->
+<div class="app" id="app" aria-hidden="true">
+  <header>
+    <div class="brand">
+      <img src="assets/logo-ypm.png" alt="logo YPM">
+      <div class="title">YPM Tube — Budaya Organisasi</div>
+    </div>
+    <div class="controls">
+      <div class="small">Tekan ← → untuk navigasi • Enter buka kartu • Esc tutup modal</div>
+      <button id="musicToggle" class="btn" style="background:#fff;color:#000;margin-left:12px">🔈 Musik Off</button>
+      <button id="autoplayBtn" class="btn">Autoplay ▶</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="carousel" id="carousel" tabindex="0" aria-label="Deretan topik">
+      <!-- cards: ensure data-id matches TOPICS keys below -->
+      <div class="card" data-id="pengertian" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>📘 Pengertian Dasar</h3><p>Definisi Budaya, Organisasi, dan Budaya Kerja — landasan pemahaman.</p></div>
+      </div>
+
+      <div class="card" data-id="tujuan" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>🎯 Tujuan</h3><p>Arah perilaku organisasi, etika, identitas, dan kualitas layanan.</p></div>
+      </div>
+
+      <div class="card" data-id="jenis" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>🌀 Jenis Budaya</h3><p>Clan, Market, Hierarchy, dan Adhocracy — ciri & contoh.</p></div>
+      </div>
+
+      <div class="card" data-id="motto" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>✨ Motto YPM</h3><p>Berilmu, Beramal, dan Bertaqwa — pedoman setiap tindakan.</p></div>
+      </div>
+
+      <div class="card" data-id="caturwiguna" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>💠 Catur Wiguna</h3><p>Empat aspek: manfaat masyarakat, kualitas, disiplin, inovasi.</p></div>
+      </div>
+
+      <div class="card" data-id="inspirasi" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>💡 Inspirasi Astra</h3><p>Catur Dharma menjadi pijakan nilai & tanggung jawab sosial.</p></div>
+      </div>
+
+      <div class="card" data-id="implementasi" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>🚀 Implementasi</h3><p>Kurikulum, kegiatan sosial (Pasukan Semut, GNK), reward, & monitoring.</p></div>
+      </div>
+
+      <div class="card" data-id="dampak" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>🌱 Dampak & Hasil</h3><p>Disiplin, lingkungan kondusif, karakter tangguh, dan mutu meningkat.</p></div>
+      </div>
+
+      <div class="card" data-id="kesimpulan" tabindex="0">
+        <div class="thumb" style="background-image:url('assets/cover.jpg')"></div>
+        <div class="meta"><h3>🏁 Kesimpulan</h3><p>Budaya organisasi YPM sebagai pondasi karakter unggul dan manfaat bagi masyarakat.</p></div>
+      </div>
+    </div>
+
+    <div id="details" class="details" aria-live="polite"></div>
+
+  </section>
+
+  <footer>© 2025 SMK YPM 14 Sumobito</footer>
+</div>
+
+<!-- Audio (music starts after Start button click) -->
+<audio id="bgm" loop>
+  <source src="assets/music.wav" type="audio/wav">
+  <!-- If you prefer mp3, replace with assets/music.mp3 and update file -->
+</audio>
+
+<!-- Modal -->
+<div id="modal" class="modal" role="dialog" aria-modal="true">
+  <div class="modal-card" role="document" aria-labelledby="mTitle">
+    <div class="modal-head">
+      <h3 id="mTitle"></h3>
+      <div><button onclick="closeModal()" class="btn" style="background:#fff;color:#000">Tutup ✕</button></div>
+    </div>
+    <div class="modal-body">
+      <div class="left"><div id="mPoster" class="poster-lg" style="background-image:url('assets/cover.jpg')"></div></div>
+      <div class="right">
+        <h4 id="mSubtitle"></h4>
+        <p id="mText" style="white-space:pre-line"></p>
+        <div style="margin-top:12px"><strong>Poin Penting:</strong>
+          <div id="mPoints" class="keypoints"></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div>
+        <button id="mPrev" class="btn" style="background:#fff;color:#000">◀</button>
+        <button id="mNext" class="btn">▶</button>
+      </div>
+      <div class="small">Tekan Esc untuk tutup</div>
+    </div>
+  </div>
+</div>
+
 <script>
-const TOPICS = { "pengertian": { "title":"📘 Pengertian Dasar","subtitle":"Definisi dasar","poster":"assets/cover.jpg","text":"Budaya: pikiran, akal budi...\nOrganisasi: kesatuan...\nBudaya kerja: kebiasaan & pola pikir...","points":["Budaya = nilai & norma","Organisasi = struktur & tujuan","Budaya kerja = panduan kerja"] }, "tujuan": { "title":"🎯 Tujuan","subtitle":"Mengapa budaya penting","poster":"assets/cover.jpg","text":"Memberikan arah, identitas, meningkatkan mutu, dan menjadi pondasi moral.","points":["Arah & pedoman","Identitas organisasi","Meningkatkan kualitas"] }, "jenis": { "title":"🌀 Jenis Budaya","subtitle":"Clan, Market, Hierarchy, Adhocracy","poster":"assets/cover.jpg","text":"Clan = kekeluargaan; Market = orientasi hasil; Hierarchy = struktur; Adhocracy = inovasi.","points":["Clan: kebersamaan","Market: kepuasan pelanggan","Hierarchy: efisiensi","Adhocracy: kreativitas"] }, "motto": { "title":"✨ Motto YPM","subtitle":"Berilmu, Beramal, dan Bertaqwa","poster":"assets/cover.jpg","text":"Motto YPM adalah pedoman moral dan profesionalisme di sekolah.","points":["Berilmu = kompetensi","Beramal = kontribusi masyarakat","Bertaqwa = landasan etika"] }, "caturwiguna": { "title":"💠 Catur Wiguna","subtitle":"Empat hal berguna","poster":"assets/cover.jpg","text":"Catur Wiguna: manfaat bagi masyarakat, kualitas, disiplin, dan inovasi.","points":["Program masyarakat","Pengukuran kepuasan","Reward & training","Program inovasi"] }, "inspirasi": { "title":"💡 Inspirasi Astra","subtitle":"Catur Dharma sebagai pijakan","poster":"assets/cover.jpg","text":"Catur Dharma memberi pijakan moral: pelayanan, pengabdian, menghargai individu, dan perbaikan berkelanjutan.","points":["Pengabdian","Pelayanan terbaik","Penghargaan individu","Continuous improvement"] }, "implementasi": { "title":"🚀 Implementasi","subtitle":"Langkah konkret di sekolah","poster":"assets/cover.jpg","text":"Integrasi ke kurikulum, kegiatan sosial (Pasukan Semut, GNK), reward, & monitoring.","points":["Integrasi di RPP","Kegiatan sosial","Reward & recognition","Monitoring & evaluasi"] }, "dampak": { "title":"🌱 Dampak & Hasil","subtitle":"Hasil yang diharapkan","poster":"assets/cover.jpg","text":"Peningkatan kedisiplinan, lingkungan kondusif, karakter siswa & mutu pembelajaran meningkat.","points":["Disiplin & kolaborasi","Lingkungan positif","Karakter tangguh","Manfaat masyarakat"] }, "kesimpulan": { "title":"🏁 Kesimpulan","subtitle":"Pondasi masa depan","poster":"assets/cover.jpg","text":"Budaya organisasi adalah pondasi moral & perilaku kerja bersama; konsistensi kunci keberlanjutan.","points":["Budaya = pondasi","Konsistensi = kunci","Hubungan masyarakat = tujuan"] } };
-const detailsRoot=document.getElementById('details');Object.keys(TOPICS).forEach(k=>{const t=TOPICS[k];const div=document.createElement('div');div.id='detail-'+k;div.className='detail-block';div.innerHTML=`<h4>${t.title}</h4><div style='color:#d7d7d7'>${t.subtitle}</div><p style='color:#d7d7d7;white-space:pre-line'>${t.text}</p><div class='keypoints'>${t.points.map(p=>`<div class='kp'>${p}</div>`).join('')}</div>`;detailsRoot.appendChild(div);});
-const cards=Array.from(document.querySelectorAll('.card'));const modal=document.getElementById('modal');const bgm=document.getElementById('bgm');let current=0;function focus(i){if(i<0)i=0;if(i>=cards.length)i=cards.length-1;current=i;cards[i].scrollIntoView({behavior:'smooth',inline:'center'});document.querySelectorAll('.detail-block').forEach(d=>d.classList.remove('show'));const id=cards[i].dataset.id;const det=document.getElementById('detail-'+id);if(det)det.classList.add('show');}cards.forEach((c,idx)=>{c.addEventListener('click',()=>openModal(c.dataset.id));c.addEventListener('keydown',(e)=>{if(e.key==='Enter')openModal(c.dataset.id);});});document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight')focus(current+1);if(e.key==='ArrowLeft')focus(current-1);if(e.key==='Escape')closeModal();});function openModal(id){const d=TOPICS[id];if(!d)return;document.getElementById('mTitle').innerText=d.title;document.getElementById('mSubtitle').innerText=d.subtitle;document.getElementById('mText').innerText=d.text;document.getElementById('mPoster').style.backgroundImage=`url('${d.poster}')`;document.getElementById('mPoints').innerHTML=d.points.map(p=>`<div class='kp'>${p}</div>`).join('');modal.classList.add('show');modal.setAttribute('aria-hidden','false');const idx=cards.findIndex(c=>c.dataset.id===id);if(idx>=0)current=idx;focus(current);}function closeModal(){modal.classList.remove('show');modal.setAttribute('aria-hidden','true');}document.getElementById('mPrev')?.addEventListener('click',()=>{const idx=Math.max(0,current-1);openModal(cards[idx].dataset.id);});document.getElementById('mNext')?.addEventListener('click',()=>{const idx=Math.min(cards.length-1,current+1);openModal(cards[idx].dataset.id);});document.getElementById('startBtn').addEventListener('click',()=>{document.getElementById('intro').style.display='none';document.getElementById('app').style.display='block';bgm.play().catch(()=>{});document.getElementById('musicToggle').innerText='🔊 Musik On';});document.getElementById('musicToggle').addEventListener('click',()=>{if(bgm.paused){bgm.play().catch(()=>{});document.getElementById('musicToggle').innerText='🔊 Musik On';}else{bgm.pause();bgm.currentTime=0;document.getElementById('musicToggle').innerText='🔈 Musik Off';}});let autoplay=false;let autoplayTimer=null;const autoplayBtn=document.getElementById('autoplayBtn');autoplayBtn.addEventListener('click',()=>{autoplay=!autoplay;autoplayBtn.innerText=autoplay?'Autoplay ⏸':'Autoplay ▶';if(autoplay)startAutoplay();else stopAutoplay();});function startAutoplay(){stopAutoplay();autoplayTimer=setInterval(()=>{let n=current+1;if(n>=cards.length)n=0;focus(n);openModal(cards[n].dataset.id);},4200);}function stopAutoplay(){if(autoplayTimer)clearInterval(autoplayTimer);autoplayTimer=null;}document.getElementById('expandAll')?.addEventListener('click',()=>{document.querySelectorAll('.detail-block').forEach(d=>d.classList.toggle('show'));});document.getElementById('print')?.addEventListener('click',()=>{let printable='';Object.keys(TOPICS).forEach(k=>{const d=TOPICS[k];printable+=`<h2>${d.title}</h2><p>${d.subtitle}</p><p>${d.text.replace(/\n/g,'<br>')}</p><hr>`});const w=window.open('','_blank','width=800,height=900');w.document.write(`<html><body style='font-family:Arial;padding:18px'>${printable}</body></html>`);w.document.close();setTimeout(()=>w.print(),500);});focus(0);
-</script></body></html>
+/* Data untuk tiap topik (ambil dari dokumen Budaya Organisasi) */
+const TOPICS = {
+  pengertian: {
+    title: "📘 Pengertian Dasar",
+    subtitle: "Definisi: Budaya • Organisasi • Kerja",
+    poster: "assets/cover.jpg",
+    text: "• Budaya: pikiran, akal budi, dan hasil akal budi manusia.\\n• Organisasi: kesatuan yang terdiri atas bagian-bagian untuk mencapai tujuan tertentu.\\n• Kerja: kegiatan atau perbuatan yang dilakukan.\\n\\n➡️ Budaya organisasi adalah perpaduan nilai budaya & sistem organisasi yang menghasilkan norma, kebiasaan, dan perilaku kerja bersama.",
+    points: ["Budaya = nilai & norma", "Organisasi = struktur & tujuan", "Budaya kerja = kebiasaan terstruktur"]
+  },
+  tujuan: {
+    title: "🎯 Tujuan Budaya Organisasi",
+    subtitle: "Mengapa budaya organisasi penting?",
+    poster: "assets/cover.jpg",
+    text: "Budaya organisasi memberikan arah perilaku, identitas, dan etika. Fungsinya: menegakkan profesionalisme, meningkatkan produktivitas, membangun loyalitas, dan menjadi pondasi moral organisasi.",
+    points: ["Arah & pedoman perilaku", "Identitas organisasi", "Meningkatkan kualitas & loyalitas"]
+  },
+  jenis: {
+    title: "🌀 Jenis Budaya Organisasi",
+    subtitle: "Competing Values Framework (4 tipe)",
+    poster: "assets/cover.jpg",
+    text: "1) Clan — kekeluargaan, partisipasi.\\n2) Market — orientasi hasil & kepuasan stakeholder.\\n3) Hierarchy — stabilitas, formalitas, efisiensi.\\n4) Adhocracy — inovasi, fleksibilitas, kreativitas.",
+    points: ["Clan: teamwork & kepedulian", "Market: orientasi hasil", "Hierarchy: aturan & efisiensi", "Adhocracy: inovasi"]
+  },
+  motto: {
+    title: "✨ Motto YPM",
+    subtitle: "Berilmu, Beramal, dan Bertaqwa",
+    poster: "assets/cover.jpg",
+    text: "Motto YPM: “Berilmu, Beramal, dan Bertaqwa”. Motto ini memberi arah moral dan profesional bagi seluruh warga sekolah dalam pembelajaran dan pengabdian.",
+    points: ["Berilmu = pembelajaran berkelanjutan", "Beramal = kontribusi nyata", "Bertaqwa = landasan etika"]
+  },
+  caturwiguna: {
+    title: "💠 Catur Wiguna",
+    subtitle: "Empat hal berguna sebagai pedoman",
+    poster: "assets/cover.jpg",
+    text: "Catur Wiguna: 1) Manfaat bagi masyarakat. 2) Berorientasi mutu & kepuasan. 3) Disiplin & efisiensi. 4) Inovasi & kreativitas.\\nImplementasinya dalam program sekolah dan kegiatan sosial.",
+    points: ["Program pelayanan masyarakat", "Pengukuran kepuasan", "Reward & pelatihan", "Program inovasi"]
+  },
+  inspirasi: {
+    title: "💡 Inspirasi Astra (Catur Dharma)",
+    subtitle: "Catur Dharma sebagai pijakan nilai",
+    poster: "assets/cover.jpg",
+    text: "Catur Dharma: 1) Bermanfaat bagi bangsa. 2) Pelayanan terbaik. 3) Menghargai individu. 4) Berusaha mencapai yang terbaik.\\nYPM mengadaptasi nilai-nilai ini untuk memperkuat tanggung jawab sosial dan profesional.",
+    points: ["Pengabdian", "Pelayanan", "Penghargaan individu", "Continuous improvement"]
+  },
+  implementasi: {
+    title: "🚀 Implementasi Budaya Organisasi",
+    subtitle: "Langkah konkret di sekolah",
+    poster: "assets/cover.jpg",
+    text: "Contoh implementasi: integrasi ke kurikulum & RPP, kegiatan sosial & lingkungan (Pasukan Semut, GNK), sistem reward & penghargaan, serta monitoring & evaluasi berkala.",
+    points: ["Integrasi ke RPP", "Program lingkungan & sosial", "Reward & recognition", "Monitoring & evaluasi"]
+  },
+  dampak: {
+    title: "🌱 Dampak & Hasil",
+    subtitle: "Hasil yang diharapkan",
+    poster: "assets/cover.jpg",
+    text: "Dampak: peningkatan kedisiplinan, kolaborasi, lingkungan belajar kondusif, pembentukan karakter siswa, dan peningkatan mutu pendidikan serta reputasi bagi masyarakat.",
+    points: ["Disiplin & kolaborasi", "Lingkungan suportif", "Karakter tangguh", "Manfaat bagi masyarakat"]
+  },
+  kesimpulan: {
+    title: "🏁 Kesimpulan",
+    subtitle: "Pondasi untuk masa depan",
+    poster: "assets/cover.jpg",
+    text: "Budaya organisasi YPM adalah pondasi moral dan perilaku kerja bersama. Konsistensi penerapan budaya adalah kunci keberlanjutan dan manfaat bagi masyarakat.",
+    points: ["Budaya = pondasi jangka panjang", "Konsistensi = kunci keberlanjutan", "Hubungan baik dengan masyarakat = tujuan"]
+  }
+};
+
+/* Build details area */
+const detailsRoot = document.getElementById('details');
+Object.keys(TOPICS).forEach(key=>{
+  const t = TOPICS[key];
+  const block = document.createElement('div');
+  block.id = 'detail-'+key;
+  block.className = 'detail-block';
+  block.innerHTML = `<h4>${t.title}</h4>
+    <div style="color:var(--muted);font-size:13px">${t.subtitle}</div>
+    <p style="color:var(--muted);white-space:pre-line;margin-top:8px">${t.text}</p>
+    <div class="keypoints">${t.points.map(p=>`<span class="kp">${p}</span>`).join('')}</div>`;
+  detailsRoot.appendChild(block);
+});
+
+/* Card interactions */
+const cards = Array.from(document.querySelectorAll('.card'));
+const modal = document.getElementById('modal');
+const bgm = document.getElementById('bgm');
+let current = 0;
+
+function focus(i){
+  if(i < 0) i = 0;
+  if(i >= cards.length) i = cards.length - 1;
+  current = i;
+  cards[i].scrollIntoView({behavior:'smooth', inline:'center'});
+  // Show only the related detail
+  document.querySelectorAll('.detail-block').forEach(d=>d.classList.remove('show'));
+  const id = cards[i].dataset.id;
+  const det = document.getElementById('detail-'+id);
+  if(det) det.classList.add('show');
+}
+
+// open modal with full data
+function openModal(id){
+  const d = TOPICS[id];
+  if(!d) return;
+  document.getElementById('mTitle').innerText = d.title;
+  document.getElementById('mSubtitle').innerText = d.subtitle;
+  document.getElementById('mText').innerText = d.text;
+  document.getElementById('mPoster').style.backgroundImage = `url('${d.poster}')`;
+  document.getElementById('mPoints').innerHTML = d.points.map(p=>`<span class="kp">${p}</span>`).join('');
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden','false');
+  const idx = cards.findIndex(c=>c.dataset.id===id);
+  if(idx >= 0) current = idx;
+  focus(current);
+}
+
+function closeModal(){
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden','true');
+}
+
+/* attach event listeners to cards */
+cards.forEach((card, idx) => {
+  card.addEventListener('click', () => openModal(card.dataset.id));
+  card.addEventListener('keydown', (e) => { if(e.key === 'Enter') openModal(card.dataset.id); });
+});
+
+/* Modal navigation buttons */
+document.getElementById('mPrev').addEventListener('click', () => {
+  const idx = Math.max(0, current - 1);
+  openModal(cards[idx].dataset.id);
+});
+document.getElementById('mNext').addEventListener('click', () => {
+  const idx = Math.min(cards.length - 1, current + 1);
+  openModal(cards[idx].dataset.id);
+});
+
+/* Keyboard navigation */
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'ArrowRight') focus(current + 1);
+  if(e.key === 'ArrowLeft') focus(current - 1);
+  if(e.key === 'Escape') closeModal();
+});
+
+/* Start button: hide intro, show app, start music */
+document.getElementById('startBtn').addEventListener('click', () => {
+  document.getElementById('intro').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  document.getElementById('app').setAttribute('aria-hidden','false');
+  // start music after user interaction (browser-friendly)
+  try { bgm.play(); document.getElementById('musicToggle').innerText = '🔊 Musik On'; } catch(e){}
+  focus(0);
+});
+
+/* Music toggle */
+document.getElementById('musicToggle').addEventListener('click', () => {
+  if(bgm.paused){
+    bgm.play().catch(()=>{});
+    document.getElementById('musicToggle').innerText = '🔊 Musik On';
+  } else {
+    bgm.pause();
+    bgm.currentTime = 0;
+    document.getElementById('musicToggle').innerText = '🔈 Musik Off';
+  }
+});
+
+/* Autoplay (playlist-like) */
+let autoplay = false, autoplayTimer = null;
+const autoplayBtn = document.getElementById('autoplayBtn');
+autoplayBtn.addEventListener('click', () => {
+  autoplay = !autoplay;
+  autoplayBtn.innerText = autoplay ? 'Autoplay ⏸' : 'Autoplay ▶';
+  if(autoplay) startAutoplay(); else stopAutoplay();
+});
+function startAutoplay(){
+  stopAutoplay();
+  autoplayTimer = setInterval(() => {
+    let next = current + 1;
+    if(next >= cards.length) next = 0;
+    focus(next);
+    openModal(cards[next].dataset.id);
+  }, 4200);
+}
+function stopAutoplay(){ if(autoplayTimer) clearInterval(autoplayTimer); autoplayTimer = null; }
+
+/* close modal by clicking overlay */
+modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
+/* simple print / expand features (if needed) */
+function toggleExpandAll(){
+  document.querySelectorAll('.detail-block').forEach(d => d.classList.toggle('show'));
+}
+/* initialize */
+focus(0);
+</script>
+</body>
+</html>
